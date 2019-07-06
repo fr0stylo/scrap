@@ -48,5 +48,5 @@ price = float(str.replace(price_string, ',', '.'))
 
 print(f"Parsed price {str(price)}")
 
-# if price < 11.00:
-send_mail(price)
+if price < 11.00:
+    send_mail(price)
