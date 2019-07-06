@@ -8,6 +8,7 @@ EMAIL_PASSWORD = os.environ.get("email_password")
 EMAIL_TO = os.environ.get("email_to")
 SCRAPE_URL = os.environ.get("url")
 
+print("Starting scraper...")
 
 def send_mail(price):
     smtp = smtplib.SMTP_SSL('smtp.gmail.com', 465)
@@ -33,6 +34,8 @@ headers = {
 
 response = requests.get(SCRAPE_URL, headers)
 
+print("Getting resource")
+
 page_content = BeautifulSoup(response.content, 'html.parser')
 
 price_children = page_content.findChild('span', class_="price")
@@ -41,7 +44,7 @@ price_string = price_children.find_next('span').string
 
 price = float(str.replace(price_string, ',', '.'))
 
-print(price)
+print(f"Parsed price {str(price)}")
 
 if price < 11.00:
     send_mail(price)
