@@ -5,7 +5,7 @@ import os
 
 EMAIL_ACCOUNT = os.environ.get("email_account")
 EMAIL_PASSWORD = os.environ.get("email_password")
-EMAIL_TO = str.split(",", os.environ.get("email_to"))
+EMAIL_TO = os.environ.get("email_to").split(',')
 SCRAPE_URL = os.environ.get("url")
 
 print("Starting scraper...")
