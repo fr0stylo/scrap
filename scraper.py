@@ -16,8 +16,10 @@ def send_mail(price):
 
     smtp.login(EMAIL_ACCOUNT, EMAIL_PASSWORD)
 
-    subject = 'Norima kaina'
-    body = 'Dabartine kaina' + str(price)
+    subject = 'Gera kaina'
+    body = f"Pats laikas pirkti \n" \
+           f"Dabartine kaina: {str(price)} \n" \
+           f"Nuoroda: {SCRAPE_URL}"
 
     msg = f"Subject: {subject}\n\n{body}"
 
@@ -46,5 +48,5 @@ price = float(str.replace(price_string, ',', '.'))
 
 print(f"Parsed price {str(price)}")
 
-if price < 11.00:
-    send_mail(price)
+# if price < 11.00:
+send_mail(price)
